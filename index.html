@@ -1,0 +1,61 @@
+<html>
+    <div id="box">
+        <h3>韓国語に翻訳するテキストを入力してください </h3>
+        <input type="text" id="getData">
+    <p id ="show"></p>
+    </div>
+
+    <style>
+        #box{
+            background-image: linear-gradient(gray, blue);
+            color: aliceblue;
+            width: 500px;
+            height: 400px;
+            padding: 10px;
+
+        }
+        #show{
+            color: rgb(247, 251, 15);
+            font-size: 25px;
+        }
+    </style>
+
+
+    <script>
+       
+        var inputData=document.getElementById("getData");
+       inputData.addEventListener("keypress", function(e){
+        if(e.key=="Enter"){
+            showData();
+        }
+       })
+function showData(){
+const encodedParams = new URLSearchParams();
+encodedParams.append("q", inputData.value);
+encodedParams.append("target", "ko");
+encodedParams.append("source", "en");
+
+
+const options = {
+	method: 'POST',
+	headers: {
+		'content-type': 'application/x-www-form-urlencoded',
+		'Accept-Encoding': 'application/gzip',
+		'X-RapidAPI-Key': '0eb69ba430msh1b94b80628cac46p1b7907jsnc56bb89b1e1c',
+		'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
+	},
+	body: encodedParams
+};
+
+fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
+	.then(response => response.json())
+	.then(response => {
+        console.log(response)
+        document.getElementById("show").innerHTML=response.data.translations[0].translatedText;
+    }
+    )
+	.catch(err => console.error(err));
+}
+    </script>
+
+</html>
