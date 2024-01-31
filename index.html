@@ -1,61 +1,81 @@
-<html>
-    <div id="box">
-        <h3>韓国語に翻訳するテキストを入力してください </h3>
-        <input type="text" id="getData">
-    <p id ="show"></p>
-    </div>
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title>API課題 自己紹介</title>  
+<style>  
+.profile {  
+  width: 635px;  
+  border: 1px solid #888;  
+  border-radius: 7px;  
+  padding: 1em;  
+  background: #ffe;  
+}  
 
-    <style>
-        #box{
-            background-image: linear-gradient(gray, blue);
-            color: aliceblue;
-            width: 500px;
-            height: 400px;
-            padding: 10px;
-
-        }
-        #show{
-            color: rgb(247, 251, 15);
-            font-size: 25px;
-        }
-    </style>
-
-
-    <script>
-       
-        var inputData=document.getElementById("getData");
-       inputData.addEventListener("keypress", function(e){
-        if(e.key=="Enter"){
-            showData();
-        }
-       })
-function showData(){
-const encodedParams = new URLSearchParams();
-encodedParams.append("q", inputData.value);
-encodedParams.append("target", "ko");
-encodedParams.append("source", "en");
-
-
-const options = {
-	method: 'POST',
-	headers: {
-		'content-type': 'application/x-www-form-urlencoded',
-		'Accept-Encoding': 'application/gzip',
-		'X-RapidAPI-Key': '0eb69ba430msh1b94b80628cac46p1b7907jsnc56bb89b1e1c',
-		'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
-	},
-	body: encodedParams
-};
-
-fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
-	.then(response => response.json())
-	.then(response => {
-        console.log(response)
-        document.getElementById("show").innerHTML=response.data.translations[0].translatedText;
-    }
-    )
-	.catch(err => console.error(err));
-}
-    </script>
-
-</html>
+.profile .header {  
+  margin-bottom: 1em;  
+  border-bottom: 1px dashed #888;  
+}  
+.profile .header strong {  
+  font-size: 1.5em;  
+  color: #444;  
+}  
+.profile .body {  
+  display: flex;  
+  justify-content: center;  
+}  
+.profile .title {  
+  margin-bottom: 1em;  
+}  
+.profile .left {  
+  text-align: center;  
+}  
+.profile .left img {  
+  width: 200px;  
+  border-radius: 7px;  
+}  
+.profile .left strong {  
+  color: #444;  
+}  
+.profile .left {  
+  margin-right: 1em;  
+}  
+.profile .right {  
+  background: white;  
+  padding: 0 1em;  
+  border: 1px solid #ddd;  
+  border-radius: 7px;  
+}  
+.profile .right p {  
+  text-indent: 1em;  
+  color: #222;  
+}  
+</style>  
+</head>  
+<body>  
+<div class="profile">  
+  <div class="header">  
+    <strong>間宮悠斗のホームページ</strong>  
+  </div>  
+  <div class="body">  
+    <div class="left">  
+    
+      <div><strong>自己紹介</strong></div>
+      
+    </div>  
+    <div class="right">  
+      <p>こんにちは。間宮悠斗です。</p> 
+      <p>2002年10月23日生まれ。開志専門職大学の学生です。</p> 
+      <p>私の趣味は登山です。富士山や槍ヶ岳など全国の山を登っています。</p>  
+      <p>登山は時間をかけて山道を歩き続ける有酸素運動になります。 標高が高い山では低酸素状態で運動を続けることで、より循環器系に負荷をかけることができます。</p>
+      <p>「高地トレーニング」として持久力向上のために使われることもあります。 また、登り下りのある山道なので足腰の筋力を鍛える筋力トレーニングの効果もあります。</p> 
+      <p>そんな登山に興味があれば、一緒に登ってみませんか？</p> 
+      <p>email: 20121066@kaishi-pu.ac.jp
+         連絡お待ちしております。</p>
+    </div>  
+  </div> 
+  <img src="/Users/mamiyayuuto/Downloads/640px-MtFuji_FujiCity.jpg" alt="プロフィール写真">  
+</div>  
+</body>  
+</html>  
